@@ -123,7 +123,7 @@ public class OEMentions: NSObject, UITextViewDelegate, UITableViewDelegate, UITa
     
     public func textViewDidEndEditing(_ textView: UITextView) {
         
-        self.mentionQuery = ""
+       
         self.isMentioning = false
         UIView.animate(withDuration: 0.2, animations: {
             self.tableView.isHidden = true
@@ -243,7 +243,7 @@ public class OEMentions: NSObject, UITextViewDelegate, UITableViewDelegate, UITa
             self.delegate!.mentionSelected(id: theFilteredList[indexPath.row].id!, name: theFilteredList[indexPath.row].name!)
         }
         
-        self.mentionQuery = ""
+//         self.mentionQuery = ""
         self.isMentioning = false
         self.theFilteredList = oeObjects!
         UIView.animate(withDuration: 0.2, animations: {
@@ -258,6 +258,7 @@ public class OEMentions: NSObject, UITextViewDelegate, UITableViewDelegate, UITa
         
         let range: Range<String.Index> = self.textView!.text.range(of: "@" + self.mentionQuery)!
         self.textView!.text.replaceSubrange(range, with: name)
+        self.mentionQuery = ""
         
         let theText = self.textView!.text + " "
         
